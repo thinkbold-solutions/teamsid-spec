@@ -241,10 +241,11 @@ This section is the **allow-list exception**: these files, and only these, may b
 is the client's own upload, identifiable by the locationId `5ScCH7Aeywc8YnNrNGt1` in its path.
 Use the alt text given — it is the client's own, not invented.
 
-71. **Header logo** — 44x44, `loading="eager"`
+71. **Header logo** — natural size 350x180 (**1.94:1**). Render 85x44, or height + width:auto.
+    `loading="eager"`. NEVER force a square or any other ratio — 44x44 and 220x60 both squash it.
     `https://assets.cdn.filesafe.space/5ScCH7Aeywc8YnNrNGt1/media/68e5459484a71d0da8e1754c.png`
     alt: `Team Sid Logo`
-72. **Footer combined logo** — 220x80, lazy
+72. **Footer combined logo** — natural size 350x180 (**1.94:1**). Render 155x80. Lazy.
     `https://storage.googleapis.com/msgsndr/5ScCH7Aeywc8YnNrNGt1/media/69134a6229bad1108098a3fe.webp`
     alt: `Team Sid and Bay Realty of Florida combined logo`
 73. **Team photo**, `/about-us` — lazy
@@ -260,7 +261,11 @@ Use the alt text given — it is the client's own, not invented.
     years of experience or specialty — that copy does not exist. Do not link them to
     `/about-us/heather` or `/about-us/jeremy`; those routes are [COPY PENDING] (§8.8).
 77. Every image needs explicit width/height or an aspect-ratio box (§50, no layout shift) and alt
-    text (§26).
+    text (§26). **The width:height you set must match the asset's natural ratio.** Both logos are
+    350x180 = 1.94:1; the headshots are 400x600 = 2:3. A mismatched pair silently distorts the art.
+78. **Nothing may be server-rendered at `opacity:0`.** RULE 10 requires content readable with
+    JavaScript disabled. Motion wrappers must SSR their final visible state and animate only as a
+    progressive enhancement after hydration.
 
 ### 15.1 BANNED SOURCES — verified stock / AI, never use
 78. **`vibe.filesafe.space/1776639819036901291/assets/*`** — 10 decorative images left in the
