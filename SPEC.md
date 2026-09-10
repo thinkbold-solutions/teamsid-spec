@@ -193,8 +193,12 @@ Order and destinations exactly:
 
     a. Map search — `/` and `/search`
        `https://idxaddons.com/addon/map/b3NhMm5YczVHVlY%3D7_9BcdV_iw8`
-    b. Featured listing carousel — `/`
-       `https://idxaddons.com/addon/speedy/b3NhMm5YczVHVlY%3D7_9BcdV_iw8/?w=340&h=0&imgType=2&theme=zoom&site=http%3A%2F%2Fhomes.teamsidtampabay.com%2Fidx%2Fcarousel.php%3Fwidgetid%3D43491`
+    b. Featured listing carousel — `/` — ⚠️ **THE `id` IS FUNCTIONALLY REQUIRED.** This widget
+       calls `idx('#idxwidgetsrc-43491')` to find its OWN script tag and inserts the carousel
+       beside it. Without the id it executes and renders nothing, silently. Render the COMPLETE
+       tag, not just the src:
+       `<script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-43491" src="https://idxaddons.com/addon/speedy/b3NhMm5YczVHVlY%3D7_9BcdV_iw8/?w=340&h=0&imgType=2&theme=zoom&site=https%3A%2F%2Fhomes.teamsidtampabay.com%2Fidx%2Fcarousel.php%3Fwidgetid%3D43491"></script>`
+       (Only this embed needs an id. The map and testimonials embeds must NOT be given one.)
     c. Testimonials — `/` and `/reviews`
        `https://idxaddons.com/addon/testimonials/b3NhMm5YczVHVlY%3D7_9BcdV_iw8/`
     d. Home valuation — `/home-valuation`
@@ -204,6 +208,16 @@ Order and destinations exactly:
 49. Additional embeds (Google Reviews, community widgets, calculators, CMA, Property AI, Single
     Property Websites) will be added here once configured. **[PENDING]** — do not invent them.
 50. Reserve a fixed-height container for each embed so it cannot cause layout shift (§16).
+50a. **Record and render each embed as its COMPLETE tag, never just the `src`.** Attributes such as
+     `id` and `charset` can be functionally required — the carousel above renders nothing without
+     its `id`. Any injector that builds a script element must copy EVERY attribute, not just `src`,
+     or the requirement is silently dropped.
+50b. **Third-party widgets must be injected client-side into a container React never reconciles.**
+     Server-rendering them via `dangerouslySetInnerHTML` lets the browser execute the script during
+     parse, then React hydration wipes the DOM the widget wrote. Symptoms: `Map: Expected mapDiv
+     ... passed null`, React error #418. Put the URL in a `data-embed-src` attribute if it must stay
+     verifiable in served HTML — this supersedes any reading of §14 items 60/63 that would require
+     an executing `<script>` in the SSR output.
 
 ## 12. PROHIBITIONS  ← never omit
 51. No invented ratings, star graphics, review counts, testimonials, statistics, listings, MLS
