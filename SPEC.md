@@ -210,8 +210,18 @@ Order and destinations exactly:
        `https://idxaddons.com/addon/testimonials/b3NhMm5YczVHVlY%3D7_9BcdV_iw8/`
     d. Home valuation — `/home-valuation`
        `https://idxaddons.com/addon/plunkvaluation/b3NhMm5YczVHVlY%3D7_9BcdV_iw8`
-    e. CRM reviews widget — `/` and `/reviews`
+    e. CRM reviews widget — ⏸️ **DEFERRED, REMOVED FROM THE SITE 2026-09-10. DO NOT RE-ADD YET.**
        `https://backend.leadconnectorhq.com/appengine/reviews/get_widget/`
+       Verified in the CRM 2026-09-10: **no review widget has ever been created**
+       (Reputation → Widgets → Saved Widgets is empty) and the account has **ZERO reviews**
+       ("No Reviews Yet"), with Google Business Profile not connected. The URL returns **HTTP 404
+       with a JSON body**, which the browser then blocks under CORB. It is not a bad URL we
+       transcribed — there is nothing behind it. Creating a widget today would render an empty box.
+       Removed from `/` under RULE 6 (do not render a control with nothing to do); the Testimonials
+       column now runs full width and carries a real IDX testimonial.
+       **Bring it back only when BOTH are true:** (1) Google Business Profile is connected and the
+       account has real reviews, and (2) a widget has been created under Reputation → Widgets,
+       which yields the correct embed URL — this bare path is not it.
 49. Additional embeds (Google Reviews, community widgets, calculators, CMA, Property AI, Single
     Property Websites) will be added here once configured. **[PENDING]** — do not invent them.
 50. Reserve a fixed-height container for each embed so it cannot cause layout shift (§16).
