@@ -124,9 +124,16 @@ Order and destinations exactly:
     `Contact Us` → `/contact`.
 
 ### 8.4 `/` section headings (literal)
-37. `Featured Luxury Listings` · `What's Your Home Worth?` · `Explore Tampa Bay Neighborhoods` ·
+37. `Featured Listings` · `What's Your Home Worth?` · `Explore Tampa Bay Neighborhoods` ·
     `Search Properties by Map` · `Frequently Asked Questions` · `What Our Clients Say` ·
     `From the Blog` · `Get in Touch`
+
+37a. ⚠️ **The heading is `Featured Listings`, NOT "Featured Luxury Listings".** The IDX carousel
+     falls through: the agent's own listings first, then the brokerage's, then a fallback. Team Sid
+     currently have no active listings of their own, so it renders Bay Realty inventory — which is
+     wider than their service areas and spans every price tier (observed 2026-09-10: a $119,900
+     one-bed in Clearwater). "Luxury" is a claim the widget cannot guarantee and RULE 1 forbids
+     claims we cannot support. §5 already said `Featured Listings`; §37 was the outlier.
 
 ### 8.5 Brand-name rule
 38. The team is written **`Team Sid`** — two words — everywhere. Never `TeamSid`.
