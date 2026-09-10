@@ -237,8 +237,16 @@ Order and destinations exactly:
 
 ## 13. THE IDX WRAPPER PAGE  ← required for the IDX integration
 56. Create a route `/idx-wrapper` containing the full site header and footer, and between them,
-    on their own lines, exactly:
-    `<!--idxStart-->` and `<!--idxStop-->`
+    as direct children of `<main>`, in this order, exactly:
+    `<div id="idxStart" style="display:none"></div>` and `<div id="idxStop" style="display:none"></div>`
+    ⚠️ **DIV ELEMENTS, NOT HTML COMMENTS.** Confirmed by IDX Broker support (RealtyCandy),
+    2026-09-10: *"The issue stems from the idxStart and idxStop tags being formatted as HTML
+    comments. When present as comments, the wrapper parser misses them."* The comment form
+    `<!--idxStart-->` is what every generic IDX Broker guide shows and it does NOT work here —
+    their wrapper generator rejects the page with "Please check if your wrapper page has the
+    IDXStart and IDXStop tags" even when the comments are provably present in the served HTML.
+    ids are case-sensitive: `idxStart` / `idxStop`.
+    Bonus: plain JSX, so no `dangerouslySetInnerHTML` and none of the hydration risk in §50b.
 57. Nothing between those two markers. IDX Broker injects its page content there.
 58. `/idx-wrapper` must be `noindex, nofollow` and must not appear in the nav, footer or sitemap.
 59. It must be reachable on the published domain — the wrapper generator cannot read a preview URL.
