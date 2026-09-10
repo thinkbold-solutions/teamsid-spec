@@ -267,6 +267,24 @@ Use the alt text given — it is the client's own, not invented.
     JavaScript disabled. Motion wrappers must SSR their final visible state and animate only as a
     progressive enhancement after hydration.
 
+### 15.2 HERO BACKGROUND VIDEO — homepage only
+79. **Video** (960x540, h264, 10s loop, no audio, 0.42 MB):
+    `https://assets.cdn.filesafe.space/5ScCH7Aeywc8YnNrNGt1/media/6aa23af0bfc1456f8c969b04.mp4`
+    **Poster** (0.08 MB) — this is the LCP element and paints first:
+    `https://assets.cdn.filesafe.space/5ScCH7Aeywc8YnNrNGt1/media/6aa23b11dd867dc12d09229e.jpg`
+80. Decorative background layer behind the hero content. `aria-hidden="true"`. It must not alter
+    the §5 section order or move the locked H1.
+81. `preload="none"` · `muted` · `playsinline` · `loop` · no controls. It must NOT download during
+    initial page load — the poster is what paints.
+82. Autoplay ONLY under `prefers-reduced-motion: no-preference`. Under `reduce`, do not autoplay and
+    do not load the video at all; leave the poster (RULE 10).
+83. Fixed aspect-ratio box, `object-fit: cover`, so it cannot cause layout shift (RULE 7).
+84. A dark scrim sits between video and text so the H1/subtitle keep their contrast.
+85. **Never use the 5.82 MB original** `.../media/6930b4034d01f36c14a8f6b1.mp4`. It is 22.9s at
+    2.13 Mbps — roughly 37x the whole JS bundle — and autoplaying it competes with first paint on an
+    LCP that is already the weak point (~3.4s). The file above is that source, trimmed to 10s,
+    scaled to 960w, audio stripped: 93% smaller.
+
 ### 15.1 BANNED SOURCES — verified stock / AI, never use
 78. **`vibe.filesafe.space/1776639819036901291/assets/*`** — 10 decorative images left in the
     abandoned earlier build. 800x533 / 800x640 are stock-library export sizes; 1408x768 PNGs are
