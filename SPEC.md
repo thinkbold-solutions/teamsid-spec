@@ -234,3 +234,42 @@ Order and destinations exactly:
 68. Lighthouse mobile ≥ §17 targets.
 69. Zero fabricated content per §51-§54.
 70. `/idx-wrapper` reachable and containing both markers.
+
+## 15. IMAGE ASSETS — the only images permitted  ← added 2026-09-10
+The prohibition in the header ("do not add images") and §53 ("no stock photography") stand.
+This section is the **allow-list exception**: these files, and only these, may be used. Every one
+is the client's own upload, identifiable by the locationId `5ScCH7Aeywc8YnNrNGt1` in its path.
+Use the alt text given — it is the client's own, not invented.
+
+71. **Header logo** — 44x44, `loading="eager"`
+    `https://assets.cdn.filesafe.space/5ScCH7Aeywc8YnNrNGt1/media/68e5459484a71d0da8e1754c.png`
+    alt: `Team Sid Logo`
+72. **Footer combined logo** — 220x80, lazy
+    `https://storage.googleapis.com/msgsndr/5ScCH7Aeywc8YnNrNGt1/media/69134a6229bad1108098a3fe.webp`
+    alt: `Team Sid and Bay Realty of Florida combined logo`
+73. **Team photo**, `/about-us` — lazy
+    `https://storage.googleapis.com/msgsndr/5ScCH7Aeywc8YnNrNGt1/media/69610a5a15e9b5e1ca6e85e5.webp`
+    alt: `Team Sid - Heather and Jeremy Sidlauskas, Tampa Bay Real Estate Experts`
+74. **Heather headshot**, `/about-us` — 400x600, lazy
+    `https://storage.googleapis.com/msgsndr/5ScCH7Aeywc8YnNrNGt1/media/69137c269e0b185115d3f92f.webp`
+    alt: `Heather Sidlauskas`
+75. **Jeremy headshot**, `/about-us` — 400x600, lazy
+    `https://storage.googleapis.com/msgsndr/5ScCH7Aeywc8YnNrNGt1/media/69137c84042d13f580bae4cf.webp`
+    alt: `Jeremy Sidlauskas`
+76. Headshots carry the person's NAME as a caption and nothing else. No bio, title, credential,
+    years of experience or specialty — that copy does not exist. Do not link them to
+    `/about-us/heather` or `/about-us/jeremy`; those routes are [COPY PENDING] (§8.8).
+77. Every image needs explicit width/height or an aspect-ratio box (§50, no layout shift) and alt
+    text (§26).
+
+### 15.1 BANNED SOURCES — verified stock / AI, never use
+78. **`vibe.filesafe.space/1776639819036901291/assets/*`** — 10 decorative images left in the
+    abandoned earlier build. 800x533 / 800x640 are stock-library export sizes; 1408x768 PNGs are
+    AI-generation output. One of them shows a **wooden chalet with conifers and autumn deciduous
+    trees** — northern Europe or the Pacific Northwest, not Tampa Bay, on a Tampa Bay realtor's
+    site. Misleading as well as non-compliant.
+79. **`res.cloudinary.com/dscqcqtjn/.../five-stars-7292866_1920_bppsf4.png`** — a Pixabay stock
+    five-star graphic. This is the exact artefact §53 names and a direct RULE 1 breach.
+80. Not-yet-placed client assets, listed so they are not mistaken for stock:
+    `.../media/691372619ba8fe816e091537.webp` and `.../media/69e56a3438381eafa8a8dd56.webp`
+    (two more compressions of the team photo) and `.../media/6930b4034d01f36c14a8f6b1.mp4` (video).
