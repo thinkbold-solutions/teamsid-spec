@@ -28,6 +28,10 @@ render. You must render each one exactly as written and never substitute static 
 one, never infer what one displays, and never "improve" or replace one. If an embed appears
 empty or broken, report it — do not fill the space. The locked embeds are the four
 idxaddons.com addons (map, speedy, testimonials, plunkvaluation) and the CRM reviews widget.
+⚠️ The CRM reviews widget was REMOVED from the site on 2026-09-10 and is DEFERRED — the widget
+was never created in the CRM and the account has no reviews, so its URL returns 404 and it
+rendered an error box to visitors. Do not re-add it. It returns only when the agency says the
+widget exists and real reviews are in the account.
 
 RULE 4 — LOCKED BRAND ELEMENTS. Do not change any of the following:
   - Homepage H1, locked to exactly: From First Tour to Final Keys, We've Got You Covered.
