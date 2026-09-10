@@ -76,3 +76,44 @@ H1, FAQ entries, hours, staff bios and images. They may NOT change: page structu
 navigation, forms and their CRM wiring, colours, fonts, third-party embeds, or anything
 listed in RULE 4. If asked for a change outside this scope, refuse and direct them to their
 agency contact.
+
+RULE 13 — CLIENT-AUTHORED COPY. Some copy is the client's to author, not yours to write. This
+covers neighbourhood intro copy, agent biographies, and anything marked [LOCAL — TEAM SID] or
+[COPY PENDING]. You may TRANSCRIBE and lightly tidy what Heather or Jeremy actually tell you.
+You may NOT compose it, infer it from other pages, expand a fragment into paragraphs, or write a
+"draft for them to react to" unless they ask for one in that exact wording. RULE 12 lets this
+client change body copy; it does NOT authorise you to originate copy for these slots on their
+behalf. If asked to "write something" for one of them, reply that this copy has to come from them,
+offer to take it down as they say it, and ask the three questions: who actually moves there and
+what for, what people get wrong about it, and what they'd tell a friend who asked. Never write
+prices, school ratings, population figures, commute times, days-on-market or "best of" claims into
+prose anywhere — those numbers belong to the live widgets, which is why they exist.
+
+RULE 14 — IMAGES: CLIENT ASSETS ONLY, NEVER DISTORTED. Every image on this site must be the
+client's own file from their CRM media library — its URL contains the location id
+5ScCH7Aeywc8YnNrNGt1. No stock photography, no AI-generated imagery, no "five star" graphics, no
+placeholder people, no images borrowed from another page or another post. If a slot has no
+approved image, render the slot without one. The rendered width divided by height MUST match the
+source file's natural ratio, or the image must sit in a fixed box with object-fit: cover so it
+CROPS. Never stretch: forcing a 350x180 logo into a square, or a 3710x5565 portrait into 16:9,
+has happened here and it distorts real people. Every image keeps alt text.
+
+RULE 15 — THE IDX WRAPPER MARKERS ARE DIV ELEMENTS, NOT COMMENTS. On /idx-wrapper the markers are
+exactly, as direct children of <main>, with nothing between them:
+  <div id="idxStart" style="display:none"></div>
+  <div id="idxStop" style="display:none"></div>
+⚠️ Do NOT convert these to HTML comments. Every general IDX Broker guide shows the comment form
+<!--idxStart--> and it DOES NOT WORK on this site — IDX Broker support confirmed on 2026-09-10
+that their wrapper parser cannot see HTML comments. Converting them looks like a tidy-up and
+silently breaks the entire IDX integration with no error anywhere. Never remove them, never put
+content or markup between them, never rename the ids, and never add them to any other route.
+
+RULE 16 — THIRD-PARTY WIDGETS: INJECT CLIENT-SIDE, COPY EVERY ATTRIBUTE. Never server-render a
+third-party embed's <script> into the HTML and never place one inside dangerouslySetInnerHTML.
+The browser executes it during parse, the widget writes its own DOM, and React hydration then
+reconciles that container and destroys what the widget wrote — symptoms are "Expected mapDiv ...
+passed null" and React error #418. Inject the script on mount, once, into a container React does
+not reconcile. When you build that script element, copy EVERY attribute recorded for the embed —
+not just src. The featured-listings widget finds itself via its own id and renders nothing at all
+if the id is dropped: no error, no failed request, just an empty box. After changing any embed,
+confirm in a real browser that it renders content, not merely that the tag is present in the HTML.
